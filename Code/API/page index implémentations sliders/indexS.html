@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <!-- En-tête de la page-->
+        <meta charset="utf-8" />
+		<link rel="stylesheet" media="screen" title="super style" href="feuille.css" />
+
+        <title>Génération</title>
+
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<link rel="stylesheet" href="/resources/demos/style.css">
+
+    </head>
+
+    <body>
+    
+	<img src="images/map.jpg" class="superbg" />
+
+	<div id="main">
+	<header>
+	  <div id="titre">  
+		<h1>Génération de carte COULEUR</h1>
+	  </div>
+	</header>
+
+	<div id="formulaire">
+	<form oninput="level.value = flying.valueAsNumber" action="http://localhost:3000/" method="post" id="couleur">
+	
+	<label for="amount">Price range:</label>
+	<input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+	</p>
+	<div id="slider-range"></div>
+	</br>
+
+	<p>
+		<label for="amount1">Price range:</label>
+		<input type="text" id="amount1" readonly style="border:0; color:#f6931f; font-weight:bold;">
+	</p>
+
+	<div id="slider-range-1"></div>
+	</br>
+
+	<p>
+		<label for="amount2">Price range:</label>
+		<input type="text" id="amount2" readonly style="border:0; color:#f6931f; font-weight:bold;">
+	</p>
+
+	<div id="slider-range-2"></div>
+	</br>
+	<p>
+		<label for="amount3">Price range:</label>
+		<input type="text" id="amount3" readonly style="border:0; color:#f6931f; font-weight:bold;">
+	</p>
+
+	<div id="slider-range-3"></div>
+	</br>
+
+	<p>
+		<label for="amount4">Price range:</label>
+		<input type="text" id="amount4" readonly style="border:0; color:#f6931f; font-weight:bold;">
+	</p>
+
+	<div id="slider-range-4"></div>
+	
+				<br>  
+		<input type="submit" value="Tester" name="submit" class="bouton"/>
+		
+		<div id="telecharger">
+		<p>
+		Cliquez sur le bouton ci-dessous afin de télécharger la carte au format .tiff.
+		<br>Attention, la génération peut durer jusqu'à deux minutes. Le téléchargement démarrera automatiquement
+		</p>
+		<input type='submit' value='Telecharger' name="submit" class="bouton" />
+		</div>
+		
+	</form>
+	</div>
+
+	<div id="image">
+		<img src="images/miniature.jpg"/>
+	</div>	
+	
+
+	<footer>
+		Copyright CLEBS 2017, tous droits réservés.
+	</footer>
+	</div>
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        	<script>
+		$( function() {
+		$( "#slider-range" ).slider({
+			range: true,
+			min: 0,
+			max: 1500,
+			step:50,
+			values: [ 0, 100 ],
+			slide: function( event, ui ) {
+				$( "#amount" ).val(  ui.values[ 0 ]+"m - " + ui.values[ 1 ]+"m" );
+				$( "#amount1" ).val(  ui.values[ 1 ]+"m")
+				$( "#slider-range-1" ).slider( "option", "min", ui.values[ 1 ])
+				
+			}
+		});
+		$( "#amount" ).val( $( "#slider-range" ).slider( "values", 0 )+"m" +
+			" - " + $( "#slider-range" ).slider( "values", 1 ) +"m");
+			
+		$( "#slider-range-1" ).slider({
+			range: true,
+			min: 0,
+			max: 1500,
+			step:50,
+			values: [ 0, 100 ],
+			slide: function( event, ui ) {
+				$( "#amount1" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+				$( "#amount2" ).val(  ui.values[ 1 ]+"m")
+				$( "#slider-range-2" ).slider( "option", "min", ui.values[ 1 ])
+				$( "#slider-range" ).slider( "option", "max", ui.values[ 0 ])
+			}
+		});
+		$( "#amount1" ).val( "$" + $( "#slider-range-1" ).slider( "values", 0 ) +
+			" - $" + $( "#slider-range-1" ).slider( "values", 1 ) );
+			
+		$( "#slider-range-2" ).slider({
+			range: true,
+			min: 0,
+			max: 1500,
+			step:50,
+			values: [ 0, 100 ],
+			slide: function( event, ui ) {
+				$( "#amount2" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+				$( "#amount3" ).val(  ui.values[ 1 ]+"m")
+				$( "#slider-range-3" ).slider( "option", "min", ui.values[ 1 ])
+				$( "#slider-range-1" ).slider( "option", "max", ui.values[ 0 ])
+			}
+		});
+		$( "#amount2" ).val( "$" + $( "#slider-range-2" ).slider( "values", 0 ) +
+			" - $" + $( "#slider-range-2" ).slider( "values", 1 ) );
+		
+		$( "#slider-range-3" ).slider({
+			range: true,
+			min: 0,
+			max: 1500,
+			step:50,
+			values: [ 0, 100 ],
+			slide: function( event, ui ) {
+				$( "#amount3" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+				$( "#amount4" ).val(  ui.values[ 1 ]+"m")
+				$( "#slider-range-4" ).slider( "option", "min", ui.values[ 1 ])
+				$( "#slider-range-2" ).slider( "option", "max", ui.values[ 0 ])
+			}
+		});
+		$( "#amount3" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+			" - $" + $( "#slider-range-3" ).slider( "values", 1 ) );
+		
+		$( "#slider-range-4" ).slider({
+			range: true,
+			min: 0,
+			max: 1500,
+			step:50,
+			values: [ 0, 100 ],
+			slide: function( event, ui ) {
+				$( "#amount4" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+				$( "#slider-range-3" ).slider( "option", "max", ui.values[ 0 ])
+				
+			}
+		});
+		$( "#amount4" ).val( "$" + $( "#slider-range-4" ).slider( "values", 0 ) +
+			" - $" + $( "#slider-range-4" ).slider( "values", 1 ) );
+			
+		
+	} );
+		</script>
+	</body>
+	
+</html>
+
