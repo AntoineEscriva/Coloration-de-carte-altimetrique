@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <!-- En-tête de la page-->
+        <meta charset="utf-8" />
+        <title>Génération</title>
+		<link rel="icon" src="images/map.jpg" />
+		<!-- Feuille de style de la page web -->
+		<link rel="stylesheet" media="screen" title="super style" href="./styles/feuille.css">
+
+		<!-- Feuille de style Palette de Couleurs -->
+ 		<link rel="stylesheet" type="text/css" href="./styles/spectrum.css">
+		<link rel="stylesheet" type="text/css" href="./styles/palette.css">	
+
+		<!-- Feuille de styles des curseurs -->
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		
+		
+		<script src="./script/ajax.js"></script>
+		<script src="./script/init.js"></script>
+    </head>
+    		<!-- Utilisation de la bibliothèque JQuery -->
+		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <body>
+    	<img src="images/map.jpg" class="superbg" alt="Carte du monde"/>
+
+		<div id="main">
+			<header>
+				<div id="titre">  
+					<h1>Génération de carte COULEUR</h1>
+				</div>
+			</header>
+			
+	
+			<form id="formulaire" >
+							<!-- amount c'est l'affichage de la distance du curseur  -->
+							<!-- slider range c'est le curseur-->
+							<!-- l'input de class full c'est la palette de couleurs-->
+				<p>
+					<label for="amount">Plage d'altitude 1:</label>
+					<input type="text" id="amount" name="s1" readonly style="border:0; color:#f6931f; font-weight:bold;">
+					<div id="slider-range"></div>
+					<input type="text" class="full" name="c1" />
+					<br>
+														
+				<p>
+					<label for="amount1">Plage d'altitude 2:</label>
+					<input type="text" id="amount1" name="s2" readonly style="border:0; color:#f6931f; font-weight:bold;">
+					<div id="slider-range-1"></div>
+					<input type="text" class="full" name="c2"/>
+					<br>
+			
+				<p>
+					<label for="amount2">Plage d'altitude 3:</label>
+					<input type="text" id="amount2" name="s3" readonly style="border:0; color:#f6931f; font-weight:bold;">
+					<div id="slider-range-2"></div>
+					<input type="text" class="full" name="c3"/>
+					<br>
+				
+				
+				<p>
+					<label for="amount3">Plage d'altitude 4:</label>
+					<input type="text" id="amount3" name="s4" readonly style="border:0; color:#f6931f; font-weight:bold;">
+					<div id="slider-range-3"></div>
+					<input type="text" class="full" name="c4"/>
+					<br>
+				
+				
+				<p>
+					<label for="amount4">Plage d'altitude 5:</label>
+					<input type="text" id="amount4" name="s5" readonly style="border:0; color:#f6931f; font-weight:bold;">
+					<div id="slider-range-4"></div>
+					<input type="text" class="full" name="c5"/>
+					<br>	
+												
+				<script>
+				//Quand un des curseur est clické, on appelle la fonction "envoi()" défini dans le dossier script
+				$( '[id^="slider-range"]' ).click(function() {
+					 envoi("gen");
+				});
+				</script>
+			</form>	
+			</div>	
+			
+			
+			<div>
+			<!-- menu déroulant pour la séléction de carte -->
+			<label for="menu_destination_liste">Choix de la carte</label> 
+			<select name="menu_destination" id="menu_liste"> 
+    		 	<option value="27-38.tif">Corse-Marseille</option> 
+    		 	<option value="hauteSavoie.tiff">Haute-Savoie</option> 
+    			<option value="27-38.tif">Carte 3</option> 
+   				<option value="27-38.tif">Carte 4</option> 
+			</select>
+
+			<form action="/index/gen/" method="post">
+					<!-- Le bouton pour lancer le téléchargement -->
+				<input type="submit" name="telecharger" id="telecharger" value="telecharger"/>
+			</form>
+			<script>
+				$('select').on('change', function() {
+					envoi()
+				})
+			</script>
+		</div>
+		
+		
+
+        
+			<img id="image" src="" alt="Miniature de la carte">
+			<script>
+
+			</script>
+			
+		<footer>
+			Copyright CLEBS 2017, tous droits réservés.
+		</footer>
+		<!-- Ci-dessous, les liens de tous les scripts-->
+
+		
+
+		<script>
+		$(document).ready(function() {
+			init();
+		});
+		</script>						
+		
+		<script src="http://code.jquery.com/jquery-git.js"></script>			<!-- script slider -->			
+		<script src="./script/spectrum.js"></script>							<!-- palette de couleurs -->
+		<script src="./script/color.js"></script>								<!-- palette de couleurs -->
+		<script src="./script/palette.js"></script>								<!-- palette de couleurs -->	
+
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>		<!-- script slider affichage distance -->
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>	<!-- script slider -->
+		<script src="./script/slider.js"></script>								<!-- script slider -->
+
+		
+    </body>
+	
+</html>
+
