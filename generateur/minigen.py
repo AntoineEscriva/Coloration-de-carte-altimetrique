@@ -70,10 +70,10 @@ def tiffEnCouleurs(fichier):
 	buffer = BytesIO()
 	img.save(buffer,format="JPEG")					#Enregistre l'image	dans le buffer
 	myimage = buffer.getvalue()						
-	print "data:image/jpeg;base64,"+base64.b64encode(myimage)
+	print ("data:image/jpeg;base64," + base64.b64encode(myimage).decode('utf-8'))
 	img.close()
 
-fichier=sys.argv[1]
+fichier = sys.argv[1]
 tiffEnCouleurs(fichier)									#Fonction créant l'image .tiff colorée
 
 

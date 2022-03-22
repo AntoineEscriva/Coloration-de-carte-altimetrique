@@ -71,7 +71,7 @@ def tiffEnCouleurs(fichier):
 temps = time.time()										#Pour tester le temps d'éxecution
 fichier=sys.argv[1]
 tiffEnCouleurs(fichier)									#Fonction créant l'image .tiff colorée
-print "Généré en ",time.time()-temps									#Affiche le temps d'execution complet
+print ("Généré en ",time.time()-temps)									#Affiche le temps d'execution complet
 
 
 

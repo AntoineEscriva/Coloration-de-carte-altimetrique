@@ -15,14 +15,16 @@
 		<link rel="stylesheet" type="text/css" href="./styles/palette.css">	
 
 		<!-- Feuille de styles des curseurs -->
-		<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 		
+		<!-- Utilisation de la bibliothèque JQuery -->
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  		<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 		
-		<script src="./script/ajax.js"></script>
+	 	<script src="./script/ajax.js"></script>
 		<script src="./script/init.js"></script>
     </head>
-    		<!-- Utilisation de la bibliothèque JQuery -->
-		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    		
     <body>
     	<img src="images/map.jpg" class="superbg" alt="Carte du monde"/>
 
@@ -35,9 +37,9 @@
 			
 	
 			<form id="formulaire" >
-							<!-- amount c'est l'affichage de la distance du curseur  -->
-							<!-- slider range c'est le curseur-->
-							<!-- l'input de class full c'est la palette de couleurs-->
+				<!-- amount c'est l'affichage de la distance du curseur  -->
+				<!-- slider range c'est le curseur-->
+				<!-- l'input de class full c'est la palette de couleurs-->
 				<p>
 					<label for="amount">Plage d'altitude 1:</label>
 					<input type="text" id="amount" name="s1" readonly style="border:0; color:#f6931f; font-weight:bold;">
@@ -96,44 +98,31 @@
 			</select>
 
 			<form action="/index/gen/" method="post">
-					<!-- Le bouton pour lancer le téléchargement -->
+				<!-- Le bouton pour lancer le téléchargement -->
 				<input type="submit" name="telecharger" id="telecharger" value="telecharger"/>
 			</form>
-			<script>
-				$('select').on('change', function() {
-					envoi()
-				})
-			</script>
 		</div>
-		
-		
-
         
 			<img id="image" src="" alt="Miniature de la carte">
-			<script>
-
-			</script>
 			
 		<footer>
 			Copyright CLEBS 2017, tous droits réservés.
 		</footer>
-		<!-- Ci-dessous, les liens de tous les scripts-->
-
 		
+		<!-- Ci-dessous, les liens de tous les scripts-->
 
 		<script>
 		$(document).ready(function() {
 			init();
 		});
+		$('select').on('change', function() {
+			envoi();
+		})
 		</script>						
 		
-		<script src="http://code.jquery.com/jquery-git.js"></script>			<!-- script slider -->			
 		<script src="./script/spectrum.js"></script>							<!-- palette de couleurs -->
 		<script src="./script/color.js"></script>								<!-- palette de couleurs -->
 		<script src="./script/palette.js"></script>								<!-- palette de couleurs -->	
-
-		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>		<!-- script slider affichage distance -->
-		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>	<!-- script slider -->
 		<script src="./script/slider.js"></script>								<!-- script slider -->
 
 		
